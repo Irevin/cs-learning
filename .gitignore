@@ -1,0 +1,15 @@
+# macOS 系统文件
+.DS_Store
+
+# VSCode 设置文件
+.vscode/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# 临时文件
+*.tmp
