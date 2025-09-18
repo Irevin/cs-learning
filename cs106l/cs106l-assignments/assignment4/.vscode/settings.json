@@ -1,0 +1,6 @@
+{
+    "C_Cpp.default.cppStandard": "c++26",
+    "files.associations": {
+        "unordered_set": "cpp"
+    }
+}

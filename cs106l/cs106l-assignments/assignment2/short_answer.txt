@@ -1,0 +1,26 @@
+Before submitting this file, make sure that there are no more TODO
+placeholders remaining in the file (and remove this comment too).
+
+Marriage Pact
+-------------
+
+Q1. It is your choice to use either an ordered or unordered set. In a few sentences, what are some of the tradeoffs between the two? Additionally, please give an example (that has not been shown in lecture) of a valid hash function that could be used to hash student names for an unordered set.
+A1. 有序集合：
+优点：元素始终按照某种顺序（通常是升序）排列。这使得有序集合在执行某些操作时非常高效，例如查找最小值或最大值、按顺序遍历所有元素等。
+缺点：为了保持元素的有序性，插入和删除操作通常需要更多的时间复杂度（通常是O(log n)）。这意味着在频繁插入或删除的场景下，性能可能不如无序集合。
+无序集合：
+优点：无序集合通过哈希函数存储和检索元素，通常具有更快的平均时间复杂度（O(1)）来完成插入、删除和查找操作。这种高效性使得无序集合在处理大量数据时表现出色。
+缺点：不保证元素的顺序，因此无法支持依赖于顺序的操作。此外，如果哈希函数设计不当或数据分布不均匀，可能会出现哈希冲突，从而导致性能下降。
+
+size_t hash_student_name(const std::string& name) {
+    size_t hash = 0;
+    for (char c : name) {
+        hash = hash * 31 + c; // 使用质数（31）作为乘数，减少哈希冲突
+    }
+    return hash;
+}
+
+Q2. Note that we are saving pointers to names in the queue, not names themselves. Why might this be desired in this problem? What happens if the original set where the names are stored goes out of scope and the pointers are referenced?
+A2. 存储指针的优点：节省内存、提高效率、避免重复数据。
+潜在问题：如果原始数据超出作用域，队列中的指针会变成悬挂指针，导致未定义行为。
+解决方案：确保数据生命周期足够长，或使用智能指针，或直接存储副本。
